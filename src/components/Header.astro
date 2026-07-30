@@ -1,22 +1,16 @@
 ---
 import { COMPANY_INFO } from '../data/companyData';
-import { Anchor, PhoneCall, Menu, X, Waves } from 'lucide-astro';
-
-const currentPath = Astro.url.pathname;
+import { PhoneCall, Menu, X, Waves } from 'lucide-astro';
 
 const navLinks = [
-  { name: 'Beranda', href: '/' },
-  { name: 'Tentang Kami', href: '/about' },
-  { name: 'Layanan & Equipment', href: '/services' },
-  { name: 'Pengalaman Proyek', href: '/projects' },
-  { name: 'Kontak', href: '/contact' }
+  { name: 'Beranda', href: '#beranda' },
+  { name: 'Tentang Kami', href: '#tentang' },
+  { name: 'Layanan', href: '#layanan' },
+  { name: 'Peralatan', href: '#peralatan' },
+  { name: 'Proyek', href: '#proyek' },
+  { name: 'Klien', href: '#klien' },
+  { name: 'Kontak', href: '#kontak' }
 ];
-
-const isActive = (path: string) => {
-  if (path === '/' && currentPath === '/') return true;
-  if (path !== '/' && currentPath.startsWith(path)) return true;
-  return false;
-};
 ---
 
 <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-sm transition-all duration-300">
@@ -45,36 +39,25 @@ const isActive = (path: string) => {
   <!-- Main Navbar -->
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-20">
-      <!-- Logo -->
-      <a href="/" class="flex items-center gap-3 group">
-        <div class="w-11 h-11 rounded-xl bg-navy-900 border border-gold-500/50 p-2.5 flex items-center justify-center shadow-md group-hover:border-gold-400 transition-all duration-300">
-          <Anchor class="w-6 h-6 text-gold-400 group-hover:rotate-12 transition-transform duration-300" />
-        </div>
-        <div>
-          <div class="text-lg font-black tracking-wider text-navy-950 group-hover:text-ocean-600 transition-colors flex items-center gap-1.5">
-            PT. FIONA LINTAS SERVIS
-          </div>
-          <p class="text-[10px] text-slate-600 uppercase tracking-widest font-semibold">Marine Salvage & Subsea Engineering</p>
-        </div>
+      <!-- Main Logo Image -->
+      <a href="#beranda" class="flex items-center gap-3 group">
+        <img
+          src="/logo.png"
+          alt="PT. Fiona Lintas Servis Logo"
+          class="h-12 w-auto object-contain max-w-[180px] sm:max-w-[220px]"
+        />
       </a>
 
       <!-- Desktop Nav Links -->
       <nav class="hidden lg:flex items-center space-x-1 xl:space-x-2">
-        {navLinks.map((link) => {
-          const active = isActive(link.href);
-          return (
-            <a
-              href={link.href}
-              class={`px-4 py-2 rounded-lg text-sm font-bold transition-all duration-200 ${
-                active
-                  ? 'text-navy-900 bg-navy-50 border border-navy-200/80 shadow-sm'
-                  : 'text-slate-700 hover:text-navy-900 hover:bg-slate-100/80'
-              }`}
-            >
-              {link.name}
-            </a>
-          );
-        })}
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="px-3.5 py-2 rounded-lg text-sm font-bold text-slate-700 hover:text-navy-900 hover:bg-slate-100/80 transition-all duration-200"
+          >
+            {link.name}
+          </a>
+        ))}
       </nav>
 
       <!-- CTA Button -->
@@ -110,11 +93,7 @@ const isActive = (path: string) => {
     {navLinks.map((link) => (
       <a
         href={link.href}
-        class={`block px-4 py-3 rounded-lg text-base font-medium transition-colors ${
-          isActive(link.href)
-            ? 'text-navy-900 bg-navy-50 border-l-4 border-gold-500 font-bold'
-            : 'text-slate-700 hover:text-slate-900 hover:bg-slate-100'
-        }`}
+        class="block px-4 py-3 rounded-lg text-base font-bold text-slate-700 hover:text-navy-900 hover:bg-slate-100 transition-colors"
       >
         {link.name}
       </a>
@@ -153,6 +132,18 @@ const isActive = (path: string) => {
         openIcon.classList.toggle('hidden');
         closeIcon.classList.toggle('hidden');
       }
+    });
+
+    // Close mobile menu when clicking a link
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        if (openIcon && closeIcon) {
+          openIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+        }
+      });
     });
   }
 </script>
