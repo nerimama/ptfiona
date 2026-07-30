@@ -9,7 +9,8 @@ export interface ServiceDetail {
   id: string;
   title: string;
   shortDesc: string;
-  icon: string; // Lucide icon identifier name
+  icon: string;
+  image: string;
   details: string[];
   subcategories?: {
     title: string;
@@ -100,6 +101,7 @@ export const SERVICES: ServiceDetail[] = [
     title: "INSPECTION SERVICE",
     shortDesc: "Comprehensive NDT and structural subsea inspection using advanced video and measurement technologies.",
     icon: "Search",
+    image: "/images/inspection.png",
     details: [
       "Pipeline & Cable Inspection",
       "SPM / SBM Floating Hose Inspection",
@@ -126,6 +128,7 @@ export const SERVICES: ServiceDetail[] = [
     title: "UNDERWATER REPAIR AND MAINTENANCE",
     shortDesc: "Full-spectrum maintenance for port structures, SPM/SBM systems, and subsea pipelines.",
     icon: "Wrench",
+    image: "/images/underwater-repair.png",
     details: [
       "Port Structure Facilities Repair & Maintenance",
       "Offshore Structure Facilities (SPM / SBM Structure Facility, Pipeline and Cable Structure)",
@@ -151,6 +154,7 @@ export const SERVICES: ServiceDetail[] = [
     title: "SHIP SERVICE",
     shortDesc: "Certified UWILD inspections, underwater hull cleaning, propeller polishing, and ship repair.",
     icon: "Ship",
+    image: "/images/ship-service.png",
     details: [
       "Underwater Inspection IN-LIEU of Dry Docking (UWILD)",
       "Damage Survey",
@@ -176,6 +180,7 @@ export const SERVICES: ServiceDetail[] = [
     title: "UNDERWATER WORKS",
     shortDesc: "Heavy underwater construction, wet/dry welding, cold cutting, sand blasting, and corrosion protection.",
     icon: "Anchor",
+    image: "/images/underwater-works.png",
     details: [
       "Construction and Anode Installation",
       "Wet and Dry Welding",
@@ -200,6 +205,7 @@ export const SERVICES: ServiceDetail[] = [
     title: "HYDROGRAPHIC SURVEYING",
     shortDesc: "National & international certified bathymetric surveys, seabed volume analysis, and pipeline path investigations.",
     icon: "MapPin",
+    image: "/images/hydrographic-survey.png",
     details: [
       "Bathymetric Surveys",
       "Seabed Volume Survey",

@@ -12,7 +12,7 @@ interface Props {
 const {
   title = `${COMPANY_INFO.name} - Commercial Diving, Salvage & Subsea Engineering`,
   description = "PT. Fiona Lintas Servis is a trusted marine salvage, commercial diving, subsea engineering, and hydrographic surveying contractor based in Batam, Indonesia.",
-  image = "/og-image.jpg"
+  image = "/images/hero.png"
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://ptfiona.co.id');
@@ -91,7 +91,7 @@ const jsonLd = {
   <!-- Schema.org JSON-LD -->
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-gold-500 selection:text-navy-950 flex flex-col min-h-screen">
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-gold-500 selection:text-navy-950 flex flex-col min-h-screen">
   <Header />
   <main class="flex-grow">
     <slot />
