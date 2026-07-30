@@ -1,0 +1,158 @@
+---
+import { COMPANY_INFO } from '../data/companyData';
+import { Ship, Anchor, PhoneCall, Menu, X, Waves } from 'lucide-astro';
+
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+  { name: 'Beranda', href: '/' },
+  { name: 'Tentang Kami', href: '/about' },
+  { name: 'Layanan & Equipment', href: '/services' },
+  { name: 'Pengalaman Proyek', href: '/projects' },
+  { name: 'Kontak', href: '/contact' }
+];
+
+const isActive = (path: string) => {
+  if (path === '/' && currentPath === '/') return true;
+  if (path !== '/' && currentPath.startsWith(path)) return true;
+  return false;
+};
+---
+
+<header class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-slate-800/80 transition-all duration-300">
+  <!-- Top bar info -->
+  <div class="bg-navy-950 text-xs py-1.5 px-4 border-b border-slate-800/60 hidden md:block">
+    <div class="max-w-7xl mx-auto flex justify-between items-center text-slate-400">
+      <div class="flex items-center gap-6">
+        <span class="flex items-center gap-1.5 text-slate-300">
+          <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          Batam, Indonesia Hub
+        </span>
+        <span class="flex items-center gap-1.5 hover:text-gold-400 transition-colors">
+          <PhoneCall class="w-3.5 h-3.5 text-gold-500" />
+          <a href={`tel:${COMPANY_INFO.phone}`}>{COMPANY_INFO.phone}</a>
+        </span>
+        <span class="text-slate-400">
+          Email: <a href={`mailto:${COMPANY_INFO.emails[0]}`} class="text-slate-300 hover:text-cyan-400">{COMPANY_INFO.emails[0]}</a>
+        </span>
+      </div>
+      <div class="flex items-center gap-4">
+        <span class="text-gold-400 font-semibold tracking-wide">24/7 Commercial Diving & Marine Response</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navbar -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-20">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-navy-900 to-ocean-700 border border-gold-500/40 p-2.5 flex items-center justify-center shadow-glow group-hover:border-gold-400 transition-all duration-300">
+          <Anchor class="w-6 h-6 text-gold-400 group-hover:rotate-12 transition-transform duration-300" />
+        </div>
+        <div>
+          <div class="text-lg font-black tracking-wider text-white group-hover:text-gold-400 transition-colors flex items-center gap-1.5">
+            PT. FIONA LINTAS SERVIS
+          </div>
+          <p class="text-[10px] text-slate-400 uppercase tracking-widest font-medium">Marine Salvage & Subsea Engineering</p>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden lg:flex items-center space-x-1 xl:space-x-2">
+        {navLinks.map((link) => {
+          const active = isActive(link.href);
+          return (
+            <a
+              href={link.href}
+              class={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${
+                active
+                  ? 'text-gold-400 bg-slate-900 border border-gold-500/30 shadow-inner'
+                  : 'text-slate-300 hover:text-white hover:bg-slate-900/60'
+              }`}
+            >
+              {link.name}
+            </a>
+          );
+        })}
+      </nav>
+
+      <!-- CTA Button -->
+      <div class="hidden lg:flex items-center gap-3">
+        <a
+          href="https://wa.me/6281372154234"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="relative inline-flex items-center justify-center px-5 py-2.5 text-xs font-bold text-navy-950 uppercase tracking-wider bg-gradient-to-r from-gold-400 to-gold-500 rounded-lg hover:from-gold-300 hover:to-gold-400 transition-all duration-300 shadow-glow hover:shadow-gold-500/50 transform hover:-translate-y-0.5"
+        >
+          <Waves class="w-4 h-4 mr-1.5 text-navy-950 animate-bounce" />
+          Hubungi Tim 24/7
+        </a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="flex lg:hidden items-center">
+        <button
+          type="button"
+          id="mobile-menu-btn"
+          class="p-2.5 rounded-lg bg-slate-900 text-slate-300 hover:text-white hover:bg-slate-800 border border-slate-700/60 focus:outline-none"
+          aria-label="Toggle Navigation Menu"
+        >
+          <Menu id="menu-icon-open" class="w-6 h-6 block" />
+          <X id="menu-icon-close" class="w-6 h-6 hidden" />
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Navigation Drawer -->
+  <div id="mobile-menu" class="hidden lg:hidden bg-slate-950 border-b border-slate-800 px-4 pt-3 pb-6 space-y-2">
+    {navLinks.map((link) => (
+      <a
+        href={link.href}
+        class={`block px-4 py-3 rounded-lg text-base font-medium transition-colors ${
+          isActive(link.href)
+            ? 'text-gold-400 bg-slate-900 border-l-4 border-gold-500 font-semibold'
+            : 'text-slate-300 hover:text-white hover:bg-slate-900'
+        }`}
+      >
+        {link.name}
+      </a>
+    ))}
+    <div class="pt-4 border-t border-slate-800 space-y-3">
+      <a
+        href="https://wa.me/6281372154234"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="w-full inline-flex items-center justify-center px-5 py-3 text-sm font-bold text-navy-950 bg-gold-400 rounded-lg hover:bg-gold-300 transition-colors shadow-glow"
+      >
+        Hubungi Operations (Sukri)
+      </a>
+      <a
+        href="https://wa.me/6281357515108"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="w-full inline-flex items-center justify-center px-5 py-3 text-sm font-bold text-white bg-slate-800 border border-slate-700 rounded-lg hover:bg-slate-700 transition-colors"
+      >
+        Hubungi Commercial (Fionna)
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const openIcon = document.getElementById('menu-icon-open');
+  const closeIcon = document.getElementById('menu-icon-close');
+
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      if (openIcon && closeIcon) {
+        openIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      }
+    });
+  }
+</script>

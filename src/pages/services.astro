@@ -1,0 +1,154 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { COMPANY_INFO, SERVICES, EQUIPMENT_FLEET } from '../data/companyData';
+import { Search, Wrench, Ship, Anchor, MapPin, CheckCircle2, ShieldCheck, Cpu, ArrowRight, PhoneCall } from 'lucide-astro';
+---
+
+<BaseLayout title={`Layanan & Peralatan Equipment - ${COMPANY_INFO.name}`} description="Rincian 5 pilar layanan commercial diving, inspeksi NDT, perbaikan kapal bawah laut, hydrographic surveying, dan 20 perlengkapan diving fleet PT. Fiona Lintas Servis.">
+  <!-- PAGE HEADER HERO -->
+  <section class="relative py-20 bg-slate-950 border-b border-slate-800 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-navy-950 via-slate-950 to-navy-900 opacity-90"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gold-500/10 via-transparent to-transparent"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-gold-500/10 text-gold-400 text-xs font-bold uppercase tracking-wider border border-gold-500/20 mb-4">
+        Solusi Komprehensif
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+        Layanan Teknis & <span class="text-gold-400">Equipment Fleet</span>
+      </h1>
+      <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto mt-4 leading-relaxed">
+        Layanan inspeksi subsea, perbaikan struktur maritim, UWILD survey, dan pemetaan hydrographic didukung 20+ perlengkapan selam standar internasional.
+      </p>
+    </div>
+  </section>
+
+  <!-- 5 MAIN SERVICES DETAILED BREAKDOWN -->
+  <section class="py-20 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      {SERVICES.map((service, idx) => (
+        <div id={service.id} class="p-8 sm:p-10 bg-slate-900/90 border border-slate-800 rounded-3xl space-y-8 scroll-mt-28 relative overflow-hidden">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 border-b border-slate-800 pb-6">
+            <div class="flex items-center gap-4">
+              <div class="w-14 h-14 rounded-2xl bg-navy-950 border border-gold-500/40 flex items-center justify-center text-gold-400 shadow-glow flex-shrink-0">
+                {idx === 0 && <Search class="w-7 h-7" />}
+                {idx === 1 && <Wrench class="w-7 h-7" />}
+                {idx === 2 && <Ship class="w-7 h-7" />}
+                {idx === 3 && <Anchor class="w-7 h-7" />}
+                {idx === 4 && <MapPin class="w-7 h-7" />}
+              </div>
+              <div>
+                <span class="text-xs font-mono font-bold text-gold-400 uppercase tracking-widest">Pilar Layanan 0{idx + 1}</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">{service.title}</h2>
+              </div>
+            </div>
+
+            <a
+              href="https://wa.me/6281372154234"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center px-5 py-2.5 text-xs font-bold text-navy-950 bg-gold-400 hover:bg-gold-300 rounded-xl transition-colors shadow-glow"
+            >
+              Inkuiri Layanan Ini
+              <ArrowRight class="w-4 h-4 ml-1.5" />
+            </a>
+          </div>
+
+          <p class="text-slate-300 text-base leading-relaxed max-w-4xl">
+            {service.shortDesc}
+          </p>
+
+          <!-- Subcategories Grid -->
+          {service.subcategories && (
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+              {service.subcategories.map((sub) => (
+                <div class="p-5 bg-slate-950/80 border border-slate-800/80 rounded-2xl space-y-3">
+                  <h3 class="text-sm font-bold text-gold-400 uppercase tracking-wider flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-gold-400"></span>
+                    {sub.title}
+                  </h3>
+                  <ul class="space-y-2 text-xs text-slate-300">
+                    {sub.items.map((item) => (
+                      <li class="flex items-start gap-2">
+                        <CheckCircle2 class="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                        <span class="leading-relaxed">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          )}
+
+          <!-- Hydrographic Special Callout Card -->
+          {service.id === 'hydrographic-surveying' && (
+            <div class="p-6 bg-gradient-to-r from-navy-950 via-slate-900 to-ocean-950 border border-cyan-500/40 rounded-2xl space-y-4">
+              <div class="flex items-center gap-3">
+                <Cpu class="w-6 h-6 text-cyan-400" />
+                <h3 class="text-base font-bold text-white">Kapabilitas Khusus Hydrographic & Survey Vessel</h3>
+              </div>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Tim surveyor hydrographic kami berorientasi pada standar nasional & internasional untuk survei kedalaman bathymetric dan investigasi alur pipa offshore. Didukung peralatan GNSS RTK state-of-the-art, kapal survei tersertifikasi kelas 2C, dual-frequency & multi-beam sounder, serta perangkat lunak reduksi data presisi tinggi.
+              </p>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- COMPLETE 20-ITEM EQUIPMENT FLEET SHOWCASE -->
+  <section class="py-20 bg-slate-900/60 border-t border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-gold-500/10 text-gold-400 text-xs font-bold uppercase tracking-wider border border-gold-500/20">
+          Standard Technical Assets
+        </div>
+        <h2 class="text-3xl font-bold text-white tracking-tight">
+          Daftar Lengkap Armada & Peralatan Selam (Equipment Fleet)
+        </h2>
+        <p class="text-slate-400 text-sm">
+          Seluruh 20 unit perlengkapan teknis diservis berkala untuk menjamin keamanan operasi di lapangan.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {EQUIPMENT_FLEET.map((item) => (
+          <div class="p-5 bg-slate-950 border border-slate-800 hover:border-gold-500/40 rounded-xl space-y-2 transition-all hover:-translate-y-0.5">
+            <div class="flex items-center justify-between text-xs">
+              <span class="px-2 py-0.5 rounded bg-slate-900 text-gold-400 font-mono text-[10px]">#0{item.id}</span>
+              <span class="text-[10px] text-slate-400 uppercase tracking-wider">{item.category}</span>
+            </div>
+            <h3 class="text-sm font-bold text-white">{item.name}</h3>
+            {item.description && (
+              <p class="text-xs text-slate-400 leading-normal">{item.description}</p>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA CONTACT -->
+  <section class="py-16 bg-slate-950">
+    <div class="max-w-4xl mx-auto px-4 text-center space-y-6">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white">
+        Membutuhkan Peralatan Spesifik atau Diver Terlatih?
+      </h2>
+      <p class="text-slate-400 text-sm">
+        Konsultasikan kebutuhan spesifikasi teknis proyek subsea Anda bersama tim operasional PT. Fiona Lintas Servis.
+      </p>
+      <div class="pt-2">
+        <a
+          href="https://wa.me/6281372154234"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center px-8 py-3.5 text-xs font-bold text-navy-950 bg-gold-400 hover:bg-gold-300 rounded-xl transition-all shadow-glow"
+        >
+          <PhoneCall class="w-4 h-4 mr-2" />
+          Hubungi Operations (Sukri: +62-813-7215-4234)
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

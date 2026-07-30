@@ -1,0 +1,411 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { COMPANY_INFO, SERVICES, PROJECT_TRACK_RECORD, CLIENT_LIST } from '../data/companyData';
+import { Anchor, ShieldCheck, Award, Users, Search, Wrench, Ship, MapPin, ArrowRight, PhoneCall, CheckCircle2, Waves, Activity } from 'lucide-astro';
+
+const featuredProjects = PROJECT_TRACK_RECORD.slice(0, 6);
+---
+
+<BaseLayout title={`${COMPANY_INFO.name} - Commercial Diving & Marine Salvage Experts Batam`}>
+  <!-- HERO SECTION -->
+  <section class="relative min-h-[90vh] flex items-center justify-center bg-slate-950 overflow-hidden py-24 border-b border-slate-800">
+    <!-- Deep Sea Gradient & Background Patterns -->
+    <div class="absolute inset-0 bg-gradient-to-br from-navy-950 via-slate-950 to-navy-900 opacity-90 z-0"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-ocean-600/20 via-transparent to-transparent z-0"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-gold-500/10 via-transparent to-transparent z-0"></div>
+    
+    <!-- Submarine / Marine Grid lines overlay -->
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-30 z-0 pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center lg:text-left">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Hero Text -->
+        <div class="lg:col-span-7 space-y-8">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-navy-900/90 border border-gold-500/40 text-gold-400 text-xs font-bold uppercase tracking-widest shadow-glow">
+            <Anchor class="w-4 h-4 text-gold-400" />
+            <span>Kontraktor Terkemuka Batam & Kepulauan Riau</span>
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+            <span class="block text-white">{COMPANY_INFO.name}</span>
+            <span class="block bg-gradient-to-r from-gold-400 via-gold-300 to-ocean-400 bg-clip-text text-transparent mt-2">
+              Marine Salvage & Subsea Engineering Experts
+            </span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-slate-300 max-w-2xl font-normal leading-relaxed">
+            Spesialis penyelaman komersial (<strong class="text-white">Commercial Diving</strong>), pembersihan lunas kapal (<strong class="text-white">Underwater Hull Cleaning</strong>), inspeksi <strong class="text-white">UWILD</strong>, perbaikan struktur bawah laut, dan survei <strong class="text-white">Hydrographic Surveying</strong> profesional berbasis di Batam, Indonesia.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+            <a
+              href="/services"
+              class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-sm font-bold text-navy-950 uppercase tracking-wider bg-gradient-to-r from-gold-400 to-gold-500 hover:from-gold-300 hover:to-gold-400 rounded-xl transition-all duration-300 shadow-glow hover:shadow-gold-500/50 transform hover:-translate-y-0.5"
+            >
+              Expolore Services & Equipment
+              <ArrowRight class="w-4 h-4 ml-2" />
+            </a>
+            <a
+              href="/contact"
+              class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-sm font-bold text-white bg-slate-900/80 hover:bg-slate-800 border border-slate-700 hover:border-gold-500/50 rounded-xl transition-all duration-300"
+            >
+              Hubungi Tim Teknis
+            </a>
+          </div>
+
+          <!-- Trust Badges -->
+          <div class="pt-6 border-t border-slate-800/80 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-slate-400">
+            <div class="flex items-center gap-2">
+              <CheckCircle2 class="w-4 h-4 text-emerald-400" />
+              <span>Certified Commercial Divers</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <CheckCircle2 class="w-4 h-4 text-emerald-400" />
+              <span>Class Approved UWILD Surveys</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <CheckCircle2 class="w-4 h-4 text-emerald-400" />
+              <span>State-of-the-Art Subsea Equipment</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Card Graphic -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative mx-auto max-w-md lg:max-w-none">
+            <div class="absolute -inset-1 bg-gradient-to-r from-gold-500 to-ocean-500 rounded-2xl blur-lg opacity-30 animate-pulse"></div>
+            <div class="relative bg-slate-900/90 border border-slate-700/80 rounded-2xl p-6 sm:p-8 space-y-6 shadow-2xl backdrop-blur-xl">
+              <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                <div>
+                  <span class="text-xs text-gold-400 font-bold uppercase tracking-widest">Profile Ringkas</span>
+                  <h3 class="text-xl font-bold text-white mt-1">PT. Fiona Lintas Servis</h3>
+                </div>
+                <div class="w-12 h-12 rounded-xl bg-navy-950 border border-gold-500/40 flex items-center justify-center text-gold-400 shadow-glow">
+                  <Anchor class="w-7 h-7" />
+                </div>
+              </div>
+
+              <!-- Key Operations Card -->
+              <div class="space-y-3">
+                <div class="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 flex items-start gap-3">
+                  <div class="p-2 rounded-lg bg-ocean-950 text-ocean-400 border border-ocean-800/50">
+                    <Ship class="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 class="text-sm font-semibold text-white">Layanan Kapal & Docking (UWILD)</h4>
+                    <p class="text-xs text-slate-400 mt-0.5">Hull cleaning, propeller polishing, underwater welding & cutting.</p>
+                  </div>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 flex items-start gap-3">
+                  <div class="p-2 rounded-lg bg-navy-950 text-gold-400 border border-navy-800/50">
+                    <Search class="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 class="text-sm font-semibold text-white">Inspeksi Subsea & NDT</h4>
+                    <p class="text-xs text-slate-400 mt-0.5">Pipeline, SPM/SBM, UT thickness, CP inspection, Eddy Current.</p>
+                  </div>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 flex items-start gap-3">
+                  <div class="p-2 rounded-lg bg-emerald-950 text-emerald-400 border border-emerald-800/50">
+                    <MapPin class="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 class="text-sm font-semibold text-white">Hydrographic Surveying</h4>
+                    <p class="text-xs text-slate-400 mt-0.5">Bathymetric, multi-beam sounder, depth certification.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Emergency Quick Call Box -->
+              <div class="p-4 bg-gradient-to-r from-navy-900 to-slate-900 rounded-xl border border-gold-500/30 flex items-center justify-between">
+                <div>
+                  <p class="text-[10px] text-gold-400 uppercase font-bold tracking-wider">Emergency Salvage / Subsea Hotline</p>
+                  <p class="text-sm font-bold text-white">+62-813-7215-4234 (Sukri)</p>
+                </div>
+                <a
+                  href="https://wa.me/6281372154234"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="p-2.5 bg-gold-400 text-navy-950 rounded-lg font-bold text-xs hover:bg-gold-300 transition-colors shadow-glow"
+                >
+                  WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS HIGHLIGHTS BANNER -->
+  <section class="bg-navy-950 border-b border-slate-800 py-10 relative z-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-800">
+        <div class="text-center pt-4 md:pt-0">
+          <div class="text-3xl lg:text-4xl font-black text-gold-400 tracking-tight">10+ Tahun</div>
+          <div class="text-xs text-slate-400 uppercase tracking-widest mt-1 font-semibold">Pengalaman Maritim</div>
+        </div>
+        <div class="text-center pt-4 md:pt-0">
+          <div class="text-3xl lg:text-4xl font-black text-white tracking-tight">16+ Proyek</div>
+          <div class="text-xs text-slate-400 uppercase tracking-widest mt-1 font-semibold">Rekam Jejak Tuntas</div>
+        </div>
+        <div class="text-center pt-4 md:pt-0">
+          <div class="text-3xl lg:text-4xl font-black text-cyan-400 tracking-tight">100% Certified</div>
+          <div class="text-xs text-slate-400 uppercase tracking-widest mt-1 font-semibold">Diver & NDT Expert</div>
+        </div>
+        <div class="text-center pt-4 md:pt-0">
+          <div class="text-3xl lg:text-4xl font-black text-gold-400 tracking-tight">24/7 Service</div>
+          <div class="text-xs text-slate-400 uppercase tracking-widest mt-1 font-semibold">Respon Darurat Salvage</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OVERVIEW & VISION SECTION -->
+  <section class="py-20 bg-slate-950 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-6 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-ocean-950 text-ocean-400 text-xs font-bold uppercase tracking-wider border border-ocean-800/60">
+            Tentang Perusahaan
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight leading-snug">
+            Mitra Terpercaya Pekerjaan Bawah Laut & Marine Salvage di Indonesia
+          </h2>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+            PT. Fiona Lintas Servis didirikan sebagai perusahaan lokal yang dinamis dengan tim ahli berpengalaman dalam industri <strong class="text-gold-400">Commercial Diving</strong>, perbaikan fasilitas pelabuhan, inspeksi NDT, serta hydrographic survey.
+          </p>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Beroperasi dari pusat strategis Batam, Kepulauan Riau, kami siap melayani kebutuhan kapal, rig lepas pantai, dan pipa bawah laut di seluruh wilayah perairan Indonesia dan Selat Singapura.
+          </p>
+
+          <div class="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-4 bg-slate-900 border border-slate-800 rounded-xl">
+              <h4 class="text-sm font-bold text-gold-400 uppercase tracking-wider mb-1">Visi Perusahaan</h4>
+              <p class="text-xs text-slate-300 leading-normal">
+                "Being a leading diversified entity through excellence in our core business."
+              </p>
+            </div>
+            <div class="p-4 bg-slate-900 border border-slate-800 rounded-xl">
+              <h4 class="text-sm font-bold text-cyan-400 uppercase tracking-wider mb-1">Lokasi Strategis</h4>
+              <p class="text-xs text-slate-300 leading-normal">
+                Sekupang, Batam — Dekat dengan anchorage Galang, Batu Ampar, Tg. Uncang, dan Bintan.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <a
+              href="/about"
+              class="inline-flex items-center text-sm font-bold text-gold-400 hover:text-gold-300 transition-colors"
+            >
+              Baca Selengkapnya Tentang Kami
+              <ArrowRight class="w-4 h-4 ml-1.5" />
+            </a>
+          </div>
+        </div>
+
+        <!-- Visual Core Values Card -->
+        <div class="lg:col-span-6">
+          <div class="p-8 bg-gradient-to-br from-slate-900 to-navy-950 border border-slate-800 rounded-2xl space-y-6 shadow-xl">
+            <h3 class="text-xl font-bold text-white border-b border-slate-800 pb-4 flex items-center justify-between">
+              <span>Nilai-Nilai Utama (Core Values)</span>
+              <Award class="w-6 h-6 text-gold-400" />
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+              <div class="p-3 bg-slate-950/70 border border-slate-800/80 rounded-lg">
+                <span class="font-bold text-gold-400 block mb-1">1. Customer Focus</span>
+                <span class="text-slate-400">Memenuhi dan melampaui harapan pelanggan dengan komitmen penuh.</span>
+              </div>
+              <div class="p-3 bg-slate-950/70 border border-slate-800/80 rounded-lg">
+                <span class="font-bold text-gold-400 block mb-1">2. Honesty & Integrity</span>
+                <span class="text-slate-400">Pondasi kepercayaan dalam setiap proyek dan pekerjaan.</span>
+              </div>
+              <div class="p-3 bg-slate-950/70 border border-slate-800/80 rounded-lg">
+                <span class="font-bold text-gold-400 block mb-1">3. Trust</span>
+                <span class="text-slate-400">Membangun kepercayaan dengan mengutamakan kebutuhan klien.</span>
+              </div>
+              <div class="p-3 bg-slate-950/70 border border-slate-800/80 rounded-lg">
+                <span class="font-bold text-gold-400 block mb-1">4. Knowledge Sharing</span>
+                <span class="text-slate-400">Budaya saling berbagi pengetahuan teknis & inovasi.</span>
+              </div>
+              <div class="p-3 bg-slate-950/70 border border-slate-800/80 rounded-lg">
+                <span class="font-bold text-gold-400 block mb-1">5. Collaborative Teamwork</span>
+                <span class="text-slate-400">Kerja sama tim sebagai kapabilitas strategis utama.</span>
+              </div>
+              <div class="p-3 bg-slate-950/70 border border-slate-800/80 rounded-lg">
+                <span class="font-bold text-gold-400 block mb-1">6. Commitment to Excellence</span>
+                <span class="text-slate-400">Dedikasi terbaik di setiap detail pekerjaan.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 MAIN SERVICES PILLARS GRID -->
+  <section class="py-20 bg-slate-900/60 border-t border-b border-slate-800 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-gold-500/10 text-gold-400 text-xs font-bold uppercase tracking-wider border border-gold-500/20">
+          5 Pilar Layanan Utama
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+          Solusi Bawah Laut & Marine Engineering Lengkap
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base">
+          Didukung tim diver profesional, sertifikasi UWILD, dan peralatan mutakhir standar maritim internasional.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {SERVICES.map((service, index) => (
+          <div class="bg-slate-950 border border-slate-800 hover:border-gold-500/50 rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 shadow-lg group">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <div class="w-12 h-12 rounded-xl bg-navy-900 border border-slate-700 group-hover:border-gold-500 flex items-center justify-center text-gold-400 transition-colors">
+                  {index === 0 && <Search class="w-6 h-6" />}
+                  {index === 1 && <Wrench class="w-6 h-6" />}
+                  {index === 2 && <Ship class="w-6 h-6" />}
+                  {index === 3 && <Anchor class="w-6 h-6" />}
+                  {index === 4 && <MapPin class="w-6 h-6" />}
+                </div>
+                <span class="text-xs font-mono font-bold text-slate-400 group-hover:text-gold-400">0{index + 1}</span>
+              </div>
+
+              <h3 class="text-xl font-bold text-white group-hover:text-gold-400 transition-colors">
+                {service.title}
+              </h3>
+
+              <p class="text-slate-400 text-xs leading-relaxed">
+                {service.shortDesc}
+              </p>
+
+              <ul class="space-y-2 pt-2 border-t border-slate-800/80 text-xs text-slate-300">
+                {service.details.map((detail) => (
+                  <li class="flex items-start gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-gold-400 mt-1.5 flex-shrink-0"></span>
+                    <span>{detail}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="pt-6 mt-6 border-t border-slate-900">
+              <a
+                href={`/services#${service.id}`}
+                class="inline-flex items-center text-xs font-bold text-gold-400 group-hover:text-gold-300 transition-colors"
+              >
+                Detail Layanan & Peralatan
+                <ArrowRight class="w-3.5 h-3.5 ml-1 transition-transform group-hover:translate-x-1" />
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PROJECTS RECENT HIGHLIGHTS -->
+  <section class="py-20 bg-slate-950 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-ocean-950 text-ocean-400 text-xs font-bold uppercase tracking-wider border border-ocean-800/60 mb-3">
+            Track Record
+          </div>
+          <h2 class="text-3xl font-bold text-white tracking-tight">
+            Pengalaman Proyek Terbaru
+          </h2>
+          <p class="text-slate-400 text-sm mt-1">
+            Beberapa rekam jejak pekerjaan underwater hull cleaning, survey video, dan perbaikan subsea.
+          </p>
+        </div>
+        <a
+          href="/projects"
+          class="inline-flex items-center px-5 py-2.5 text-xs font-bold text-white bg-slate-900 border border-slate-700 hover:border-gold-500/50 rounded-lg transition-colors"
+        >
+          Lihat Semua 16 Proyek
+          <ArrowRight class="w-4 h-4 ml-1.5" />
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {featuredProjects.map((project) => (
+          <div class="p-5 bg-slate-900/80 border border-slate-800 rounded-xl hover:border-slate-700 transition-all">
+            <div class="flex items-center justify-between mb-3 text-xs">
+              <span class="px-2.5 py-1 rounded bg-navy-950 text-gold-400 font-semibold border border-navy-800">
+                {project.category}
+              </span>
+              <span class="text-slate-400 font-mono">{project.date}</span>
+            </div>
+            <h3 class="text-base font-bold text-white mb-2 leading-snug">
+              {project.title}
+            </h3>
+            <div class="flex items-center gap-1.5 text-xs text-slate-400">
+              <MapPin class="w-3.5 h-3.5 text-cyan-400 flex-shrink-0" />
+              <span>{project.location}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENT SHOWCASE GRID -->
+  <section class="py-20 bg-navy-950 relative overflow-hidden border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+          Klien & Partner Industri Maritim
+        </h2>
+        <p class="text-slate-400 text-sm">
+          Dipercaya oleh perusahaan pelayaran, pengelola offshore, dan industri maritim ternama.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        {CLIENT_LIST.map((client) => (
+          <div class="p-4 bg-slate-900/70 border border-slate-800/80 rounded-xl flex flex-col justify-center items-center text-center hover:border-gold-500/40 hover:bg-slate-900 transition-all duration-300">
+            <span class="text-sm font-bold text-slate-200 tracking-wide">{client.name}</span>
+            <span class="text-[10px] text-slate-400 mt-1 uppercase tracking-widest">{client.type}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="py-16 bg-gradient-to-r from-navy-950 via-slate-950 to-navy-900 border-b border-slate-800 relative">
+    <div class="max-w-5xl mx-auto px-4 text-center space-y-6">
+      <h2 class="text-3xl font-extrabold text-white">
+        Butuh Layanan Salvage atau Commercial Diving Segera?
+      </h2>
+      <p class="text-slate-300 text-base max-w-2xl mx-auto">
+        Tim respons cepat kami di Batam siap menangani inspeksi UWILD, hull cleaning, perbaikan struktur bawah laut, dan hydrographic survey.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+        <a
+          href="https://wa.me/6281372154234"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 text-sm font-bold text-navy-950 bg-gold-400 hover:bg-gold-300 rounded-xl transition-all shadow-glow"
+        >
+          <PhoneCall class="w-4 h-4 mr-2" />
+          Hubungi Operations Manager (Sukri)
+        </a>
+        <a
+          href="/contact"
+          class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 text-sm font-bold text-white bg-slate-900 border border-slate-700 hover:bg-slate-800 rounded-xl transition-colors"
+        >
+          Kirim Formulir Inkuiri
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

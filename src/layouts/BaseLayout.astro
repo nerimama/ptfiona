@@ -1,0 +1,101 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { COMPANY_INFO } from '../data/companyData';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title = `${COMPANY_INFO.name} - Commercial Diving, Salvage & Subsea Engineering`,
+  description = "PT. Fiona Lintas Servis is a trusted marine salvage, commercial diving, subsea engineering, and hydrographic surveying contractor based in Batam, Indonesia.",
+  image = "/og-image.jpg"
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://ptfiona.co.id');
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "MarineContractor",
+  "name": COMPANY_INFO.name,
+  "description": description,
+  "url": canonicalURL.toString(),
+  "telephone": COMPANY_INFO.phone,
+  "faxNumber": COMPANY_INFO.fax,
+  "email": COMPANY_INFO.emails[0],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Komplek Pertokoan Tiban Lestari Blok RC No. 16, Tiban Indah - Sekupang",
+    "addressLocality": "Batam",
+    "addressRegion": "Kepulauan Riau",
+    "postalCode": "29426",
+    "addressCountry": "ID"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 1.1165,
+    "longitude": 103.9782
+  },
+  "areaServed": ["Indonesia", "Southeast Asia", "Batam", "Singapore Strait"],
+  "knowsAbout": [
+    "Commercial Diving",
+    "Marine Salvage",
+    "Underwater Hull Cleaning",
+    "Propeller Polishing",
+    "UWILD Inspection",
+    "Hydrographic Surveying",
+    "NDT Inspection"
+  ]
+};
+---
+
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="generator" content={Astro.generator} />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href={canonicalURL} />
+
+  <!-- Primary Meta Tags -->
+  <title>{title}</title>
+  <meta name="title" content={title} />
+  <meta name="description" content={description} />
+  <meta name="keywords" content="PT Fiona Lintas Servis, Marine Salvage Batam, Commercial Diving Indonesia, UWILD Inspection Batam, Underwater Hull Cleaning, Hydrographic Survey Batam, NDT Inspection, Subsea Engineering" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={new URL(image, canonicalURL)} />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content={canonicalURL} />
+  <meta property="twitter:title" content={title} />
+  <meta property="twitter:description" content={description} />
+  <meta property="twitter:image" content={new URL(image, canonicalURL)} />
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-gold-500 selection:text-navy-950 flex flex-col min-h-screen">
+  <Header />
+  <main class="flex-grow">
+    <slot />
+  </main>
+  <Footer />
+</body>
+</html>

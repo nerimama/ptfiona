@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { COMPANY_INFO, PROJECT_TRACK_RECORD, CLIENT_LIST } from '../data/companyData';
+import { MapPin, Calendar, CheckCircle2, Award, Briefcase, Filter } from 'lucide-astro';
+---
+
+<BaseLayout title={`Pengalaman Proyek & Klien - ${COMPANY_INFO.name}`} description="Rekam jejak 16 proyek underwater hull cleaning, survey video, perbaikan struktur subsea, serta daftar 12 klien korporat PT. Fiona Lintas Servis.">
+  <!-- PAGE HEADER HERO -->
+  <section class="relative py-20 bg-slate-950 border-b border-slate-800 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-navy-950 via-slate-950 to-navy-900 opacity-90"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-ocean-600/20 via-transparent to-transparent"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-gold-500/10 text-gold-400 text-xs font-bold uppercase tracking-wider border border-gold-500/20 mb-4">
+        Proven Track Record
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+        Pengalaman Proyek & <span class="text-gold-400">Portofolio Klien</span>
+      </h1>
+      <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto mt-4 leading-relaxed">
+        Dokumentasi rekam jejak pekerjaan bawah laut yang sukses dilaksanakan di Galang Anchorage, Batu Ampar, PaxOcean, Bintan, Kotabaru, dan perairan Indonesia.
+      </p>
+    </div>
+  </section>
+
+  <!-- PROJECTS FILTERABLE GRID SECTION -->
+  <section class="py-20 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <!-- Category Filter Tabs -->
+      <div class="flex flex-wrap items-center justify-center gap-2.5" id="project-filters">
+        <button
+          data-filter="all"
+          class="filter-btn px-4 py-2 text-xs font-bold rounded-lg transition-all border border-gold-500 bg-gold-400 text-navy-950 shadow-glow"
+        >
+          Semua Proyek (16)
+        </button>
+        <button
+          data-filter="Hull Cleaning"
+          class="filter-btn px-4 py-2 text-xs font-bold rounded-lg transition-all border border-slate-800 bg-slate-900 text-slate-300 hover:border-gold-500/40"
+        >
+          Hull Cleaning & Propeller (6)
+        </button>
+        <button
+          data-filter="Video Survey"
+          class="filter-btn px-4 py-2 text-xs font-bold rounded-lg transition-all border border-slate-800 bg-slate-900 text-slate-300 hover:border-gold-500/40"
+        >
+          Video Survey (4)
+        </button>
+        <button
+          data-filter="Subsea Repair"
+          class="filter-btn px-4 py-2 text-xs font-bold rounded-lg transition-all border border-slate-800 bg-slate-900 text-slate-300 hover:border-gold-500/40"
+        >
+          Subsea & Buoy Repair (2)
+        </button>
+        <button
+          data-filter="Hydrographic & Inspection"
+          class="filter-btn px-4 py-2 text-xs font-bold rounded-lg transition-all border border-slate-800 bg-slate-900 text-slate-300 hover:border-gold-500/40"
+        >
+          Survey & Inspection (2)
+        </button>
+        <button
+          data-filter="Underwater Works"
+          class="filter-btn px-4 py-2 text-xs font-bold rounded-lg transition-all border border-slate-800 bg-slate-900 text-slate-300 hover:border-gold-500/40"
+        >
+          Underwater Works (2)
+        </button>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-grid">
+        {PROJECT_TRACK_RECORD.map((project) => (
+          <div
+            data-category={project.category}
+            class="project-card p-6 bg-slate-900/90 border border-slate-800 hover:border-gold-500/50 rounded-2xl space-y-4 transition-all duration-300 hover:-translate-y-1 shadow-lg"
+          >
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 rounded bg-navy-950 text-gold-400 text-xs font-bold border border-navy-800">
+                {project.category}
+              </span>
+              <div class="flex items-center gap-1 text-xs text-slate-400 font-mono">
+                <Calendar class="w-3.5 h-3.5 text-gold-400" />
+                <span>{project.date}</span>
+              </div>
+            </div>
+
+            <h3 class="text-lg font-bold text-white leading-snug">
+              {project.title}
+            </h3>
+
+            <div class="pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-300">
+              <div class="flex items-center gap-1.5 text-slate-300">
+                <MapPin class="w-4 h-4 text-cyan-400 flex-shrink-0" />
+                <span>{project.location}</span>
+              </div>
+              <span class="flex items-center gap-1 text-emerald-400 font-semibold text-[11px]">
+                <CheckCircle2 class="w-3.5 h-3.5" /> Completed
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENT SHOWCASE SECTION -->
+  <section class="py-20 bg-navy-950 border-t border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-gold-500/10 text-gold-400 text-xs font-bold uppercase tracking-wider border border-gold-500/20">
+          Trusted Partners
+        </div>
+        <h2 class="text-3xl font-bold text-white tracking-tight">
+          Daftar Lengkap Klien Perusahaan (12 Corporate Clients)
+        </h2>
+        <p class="text-slate-400 text-sm">
+          Kami bangga membangun kemitraan berkelanjutan dengan berbagai institusi maritim terpercaya.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {CLIENT_LIST.map((client, index) => (
+          <div class="p-6 bg-slate-900 border border-slate-800 rounded-2xl flex items-start gap-4 hover:border-gold-500/40 transition-colors">
+            <div class="w-10 h-10 rounded-xl bg-navy-950 border border-gold-500/30 text-gold-400 font-bold flex items-center justify-center text-xs flex-shrink-0">
+              0{index + 1}
+            </div>
+            <div>
+              <h3 class="text-base font-bold text-white">{client.name}</h3>
+              <p class="text-xs text-slate-400 mt-1">{client.type}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SCRIPT FOR CLIENT-SIDE CATEGORY FILTERING -->
+  <script>
+    const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+    const projectCards = document.querySelectorAll<HTMLDivElement>('.project-card');
+
+    filterBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+
+        // Update button active styles
+        filterBtns.forEach((b) => {
+          b.classList.remove('bg-gold-400', 'text-navy-950', 'border-gold-500', 'shadow-glow');
+          b.classList.add('bg-slate-900', 'text-slate-300', 'border-slate-800');
+        });
+        btn.classList.remove('bg-slate-900', 'text-slate-300', 'border-slate-800');
+        btn.classList.add('bg-gold-400', 'text-navy-950', 'border-gold-500', 'shadow-glow');
+
+        // Show/hide project cards
+        projectCards.forEach((card) => {
+          const category = card.getAttribute('data-category');
+          if (filter === 'all' || category === filter) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</BaseLayout>
